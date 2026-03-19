@@ -25,13 +25,13 @@ YOLO11 + VLM(언어 생성 보조) 하이브리드 구조 기반 AI CCTV 통합 
    - 실시간 영상 갱신 구조 개선</br>
    - 예외 처리 및 오류 복구 로직 추가</br>
 </br>
-결론
+결론</br>
    - YOLO를 활용한 빠른 실시간 객체 탐지를 통해 영상 내 객체를 신속하게 인식</br>
    - VLM을 활용한 지능형 상황 설명 생성을 통해 분석 결과를 자연어로 해석 및 전달</br>
    - 6채널 멀티 CCTV 실시간 관제를 통해 다양한 영상 소스를 동시에 통합 관리</br>
    - 이벤트 기반 로그 및 통계 관리를 통해 발생 상황을 체계적으로 기록 및 분석</br>
 </br>
-실행
+실행</br>
    ① 6채널 CCTV 영상을 실시간으로 분석하여 객체 탐지(YOLO), 이벤트 판단, VLM 기반 상황 설명 생성 및 로그 저장을 수행하는 관제 엔진 실행</br>
      - CCTV 영상(6채널)을 입력받아 ai_engine_multi.py에서 실시간으로 프레임을 처리</br>
      - YOLO 기반 객체 탐지를 통해 사람 및 객체를 인식하고 인원 수를 계산</br>
@@ -40,8 +40,8 @@ YOLO11 + VLM(언어 생성 보조) 하이브리드 구조 기반 AI CCTV 통합 
      - VLM을 활용하여 이벤트 상황을 자연어 형태로 설명 생성</br>
      - 처리된 최신 프레임을 관제용 이미지로 저장하여 대시보드에서 활용</br>
    </br>
-   python ai_engine_multi.py
-   <img width="1908" height="747" alt="image" src="https://github.com/user-attachments/assets/50d64914-eb14-4ed1-ba00-72a9a0adbd64" />
+   python ai_engine_multi.py</br>
+   <img width="1908" height="747" alt="image" src="https://github.com/user-attachments/assets/50d64914-eb14-4ed1-ba00-72a9a0adbd64" /></br>
    </br> 
    ② 관제 대시보드</br> 
      - dashboard.py를 실행하여 Streamlit 기반 관제 화면 구동</br>
@@ -51,9 +51,9 @@ YOLO11 + VLM(언어 생성 보조) 하이브리드 구조 기반 AI CCTV 통합 
      - 이벤트 데이터 기반 통계(유형별, 카메라별)를 시각화하여 제공</br>
      - 일정 주기로 자동 새로고침하여 실시간 관제 환경 유지</br>
    </br>
-   python dashboard.py   
+   streamlit run dashboard.py</br>   
    </br>
-   <img width="1911" height="981" alt="image" src="https://github.com/user-attachments/assets/9e3c551c-009c-494d-8701-6cedfb4b8efd" />
+   <img width="1911" height="981" alt="image" src="https://github.com/user-attachments/assets/9e3c551c-009c-494d-8701-6cedfb4b8efd" /></br>
    </br>
    <img width="1766" height="881" alt="image" src="https://github.com/user-attachments/assets/cd8ad472-db51-45ca-8198-f3f0edabed2a" />
    </br>
