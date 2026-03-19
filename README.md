@@ -57,6 +57,8 @@ YOLO11 + VLM(언어 생성 보조) 하이브리드 구조 기반 AI CCTV 통합 
    </br> 
    streamlit run dashboard.py</br>   
    </br>
+   <img width="796" height="126" alt="image" src="https://github.com/user-attachments/assets/a5dec09a-55be-43fa-82aa-f3fb1c39bc03" /></br>
+   </br>
    <img width="1911" height="981" alt="image" src="https://github.com/user-attachments/assets/9e3c551c-009c-494d-8701-6cedfb4b8efd" /></br>
    </br>
    <img width="1780" height="400" alt="image" src="https://github.com/user-attachments/assets/5c9bf3d0-333f-48d5-a25b-44c8a44f2b11" />
