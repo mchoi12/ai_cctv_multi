@@ -47,16 +47,12 @@ for v in VIDEO_PATHS:
     caps.append(cap)
 
 events = []
-MAX_EVENTS = 1000  # 메모리 보호
+MAX_EVENTS = 1000
 
 last_event_time = {}
-last_save_time = 0
 
 print("AI CCTV 시작")
 
-# =========================
-# 메인 루프
-# =========================
 while True:
 
     frames = []
@@ -77,7 +73,6 @@ while True:
 
     for idx, frame in enumerate(frames):
 
-        # frame 방어
         if frame is None or frame.size == 0:
             frame = np.zeros((360, 640, 3), dtype=np.uint8)
             cv2.putText(frame, f"CAM{idx} NO SIGNAL", (50,180),
@@ -95,9 +90,6 @@ while True:
 
         now = time.time()
 
-        # =========================
-        # 이벤트 발생
-        # =========================
         if event != "normal":
             last_time = last_event_time.get(idx, 0)
 
@@ -110,9 +102,7 @@ while True:
                     capture_dir, f"cam{idx}_{timestamp}.jpg"
                 )
 
-                # 캡처 저장 (안정)
-                ret_img = cv2.imwrite(img_path, frame)
-                if not ret_img:
+                if not cv2.imwrite(img_path, frame):
                     print(f"[ERROR] 캡처 저장 실패 CAM{idx}")
 
                 desc = generate_description(event, person_count)
@@ -131,13 +121,10 @@ while True:
 
                 events.append(event_data)
 
-                # 메모리 보호
                 if len(events) > MAX_EVENTS:
                     events = events[-MAX_EVENTS:]
 
-                # CSV 저장
-                df = pd.DataFrame(events)
-                df.to_csv(csv_path, index=False)
+                pd.DataFrame(events).to_csv(csv_path, index=False)
 
                 cv2.putText(frame, "EVENT", (10,30),
                             cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 3)
@@ -145,35 +132,20 @@ while True:
         cv2.putText(frame, f"CAM{idx}", (10,350),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255,255,255), 2)
 
-        # 현재 프레임 저장 (완전 안정 방식)
+        # 최신 프레임 저장
         timestamp_ms = int(time.time() * 1000)
         current_path = os.path.join(current_dir, f"cam{idx}_{timestamp_ms}.jpg")
 
-        ret_cur = cv2.imwrite(current_path, frame)
-        if not ret_cur:
+        if not cv2.imwrite(current_path, frame):
             print(f"[ERROR] 현재프레임 저장 실패 CAM{idx}")
 
         processed.append(frame)
 
-    # GRID 표시
     if len(processed) == 6:
         row1 = cv2.hconcat(processed[:3])
         row2 = cv2.hconcat(processed[3:])
         grid = cv2.vconcat([row1, row2])
         cv2.imshow("AI CCTV", grid)
-
-    # 오래된 파일 삭제 (중요)
-    for i in range(6):
-        files = sorted(
-            [f for f in os.listdir(current_dir) if f.startswith(f"cam{i}_")],
-            key=lambda x: os.path.getctime(os.path.join(current_dir, x))
-        )
-        if len(files) > 30:
-            for f in files[:-30]:
-                try:
-                    os.remove(os.path.join(current_dir, f))
-                except:
-                    pass
 
     time.sleep(0.03)
 
