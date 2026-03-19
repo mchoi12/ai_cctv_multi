@@ -41,6 +41,9 @@ YOLO11 + VLM(언어 생성 보조) 하이브리드 구조 기반 AI CCTV 통합 
      - 처리된 최신 프레임을 관제용 이미지로 저장하여 대시보드에서 활용</br>
    </br>
    python ai_engine_multi.py</br>
+   </br>
+   <img width="699" height="314" alt="image" src="https://github.com/user-attachments/assets/f9fa6ae4-4d86-44b6-9f3f-488faa189dbf" />
+   </br>
    <img width="1908" height="747" alt="image" src="https://github.com/user-attachments/assets/50d64914-eb14-4ed1-ba00-72a9a0adbd64" /></br>
    </br> 
    ② 관제 대시보드</br> 
