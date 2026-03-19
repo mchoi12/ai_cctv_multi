@@ -51,8 +51,10 @@ YOLO11 + VLM(언어 생성 보조) 하이브리드 구조 기반 AI CCTV 통합 
      - 이벤트 데이터 기반 통계(유형별, 카메라별)를 시각화하여 제공</br>
      - 일정 주기로 자동 새로고침하여 실시간 관제 환경 유지</br>
    </br>
-   pip install streamlit-autorefres</br> 
+   </br>
    streamlit-autorefresh 패키지 설치 후 실행</br> 
+   pip install streamlit-autorefres</br> 
+   </br> 
    streamlit run dashboard.py</br>   
    </br>
    <img width="1911" height="981" alt="image" src="https://github.com/user-attachments/assets/9e3c551c-009c-494d-8701-6cedfb4b8efd" /></br>
