@@ -101,9 +101,9 @@ else:
     st.dataframe(df_sorted, width="stretch")
 
 # =========================
-# 7. 확장 통계
+# 7. 통계
 # =========================
-st.subheader("확장 통계 분석")
+st.subheader("통계 분석")
 if not df.empty:
     col1, col2 = st.columns(2)
     with col1:
