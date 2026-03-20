@@ -57,8 +57,14 @@ YOLO11 + VLM(언어 생성 보조) 하이브리드 구조 기반 AI CCTV 통합 
    </br>
    streamlit-autorefresh 패키지 설치 후 실행</br> 
    pip install streamlit-autorefres</br> 
-   </br> 
+   </br>
    streamlit run dashboard.py</br>   
+   </br>
+   외부 접근 명령어 : ngrok http 8501</br>
+   https://khalilah-implacental-kimora.ngrok-free.dev/</br>
+   </br>
+   <img width="1109" height="627" alt="image" src="https://github.com/user-attachments/assets/14887f1a-6fda-4cab-8fe4-92abbd4642b0" /></br>
+   </br>
    </br>
    <img width="796" height="126" alt="image" src="https://github.com/user-attachments/assets/a5dec09a-55be-43fa-82aa-f3fb1c39bc03" /></br>
    </br>
