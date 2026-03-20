@@ -67,3 +67,27 @@ YOLO11 + VLM(언어 생성 보조) 하이브리드 구조 기반 AI CCTV 통합 
    <img width="1780" height="400" alt="image" src="https://github.com/user-attachments/assets/5c9bf3d0-333f-48d5-a25b-44c8a44f2b11" />
    </br>
    <img width="1765" height="408" alt="image" src="https://github.com/user-attachments/assets/d2410fec-9c8e-47db-8a8f-aab948f8b0e3" />
+
+   ※ YOLO와 같은 경량 객체 탐지 모델을 사용하지 않고, VLM(Visual-Language Model)기반 컴퓨터 비전만으로 6개 채널 CCTV 영상을 실시간 분석하여 객체 탐지 및 이벤트 판단을 수행하려 하였으나, 프레임 단위로 발생하는 대량의 API 호출로 인해 쿼터 초과(비용 및 호출 제한) 문제가 발생하였다. 이로 인해 VLM 단독으로는 다채널 실시간 영상 분석을 안정적으로 처리하기 어려워, 해당 방식은 실질적인 운영이 불가능한 것으로 판단된다.</br>>
+   </br>
+   <img width="1258" height="176" alt="image" src="https://github.com/user-attachments/assets/e620c684-70da-43eb-8eb9-ccbadd1b1602" />
+   </br>
+   - 해결방법</br>
+     ① API 정싱 시용할려면 OpenAPI 유료 결재하고 Billing 등록 후 해결하는 방법</br>
+     ② 구조적으로 해결</br>
+       방법 A : 호출 제한</br>
+       방법 B : 테스트 모드</br>
+                (vlm_model.py 임시 변경)</br>
+       방법 C : 이벤트 기반 호출</br>
+                영상 → 변화 감지 (Motion) → 이상 상황 발생 시만 → VLM 호출</br>
+       방법 D : 로컬 VLM (API 제거)</br>
+            - LLaVA</br>
+            - BLIP-2</br> 
+            </br> 
+            → C 방법으로 적용</br>
+              VLM 역할은 이미지 이해 (사람 있음 / 상황 설명), 자연어 생성</br>
+                 ※  VLM은 “객체를 정밀하게 추출하는 모델”이 아니라 “장면을 이해하고 설명하는 모델”입니다.</br>
+                 ※  OpenAI API 없이 “VLM만으로 객체 추출(탐지)”은 제한적으로만 가능하며, YOLO 수준의 정확한 객체 탐지는 사실상 어렵습니다.</br>
+                 </br>
+               <img width="1252" height="189" alt="image" src="https://github.com/user-attachments/assets/34e82578-92b2-402f-9ea2-78b3f3eacbaa" /></br>
+   
